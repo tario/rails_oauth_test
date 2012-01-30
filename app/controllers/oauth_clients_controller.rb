@@ -1,4 +1,7 @@
 class OauthClientsController < ApplicationController
+  
+  include ApplicationHelper
+  
   before_filter :login_required
   before_filter :get_client_application, :only => [:show, :edit, :update, :destroy]
 
