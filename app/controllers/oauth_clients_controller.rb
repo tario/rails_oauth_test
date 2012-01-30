@@ -1,4 +1,5 @@
 class OauthClientsController < ApplicationController
+  before_filter :oauth_required, :only => [:edit]
   
   include ApplicationHelper
   
@@ -28,6 +29,7 @@ class OauthClientsController < ApplicationController
   end
 
   def edit
+    render :json => "hello world"
   end
 
   def update
