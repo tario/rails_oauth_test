@@ -6,7 +6,7 @@ module ApplicationHelper
   end
   
   def current_user
-    UserMock.new
+    User.first
   end
   
   def login_required

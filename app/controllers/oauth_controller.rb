@@ -1,5 +1,6 @@
 require 'oauth/controllers/provider_controller'
 class OauthController < ApplicationController
+  include ApplicationHelper
   include OAuth::Controllers::ProviderController
 
   protected
