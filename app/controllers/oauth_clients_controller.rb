@@ -15,7 +15,7 @@ class OauthClientsController < ApplicationController
   end
 
   def create
-    @client_application = current_user.client_applications.new(params[:client_application])
+    @client_application = current_user.client_applications.build(params[:client_application])
     if @client_application.save
       flash[:notice] = "Registered the information successfully"
       redirect_to :action => "show", :id => @client_application.id
