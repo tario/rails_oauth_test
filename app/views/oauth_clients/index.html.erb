@@ -1,8 +1,22 @@
 <div class="flash"><%= flash[:notice] %></div>
 
-Get source code of this app <a href="https://github.com/tario/rails_oauth_test">here</a><br/>
-Register new applications to get OAuth key-secret pairs, and use it with the test script 
+First, try access to this page: <a href="/hello_world">/hello_world</a>, you should see a "Invalid OAuth Request" message or
+something like that because the request made by your browser hasn't valid oauth authentication tokens
+
+</br>
+</br>
+1) Register new applications to get OAuth key-secret pairs (or use existing one) to get key-secret pairs
+</br>
+2) Use key-secret pairs with the test script 
 <a href="https://github.com/tario/rails_oauth_test/blob/master/extras/consumerapp.rb">consumerapp.rb</a>
+This of course can (and ideally) be done from another web page instead of script, but demostrating that is trivial and insipid
+</br>
+3) Follow instructions given by script
+</br>
+</br>
+
+Get source code of this app <a href="https://github.com/tario/rails_oauth_test">here</a><br/>
+
 <br/>
 
 <h1>OAuth Client Applications</h1>

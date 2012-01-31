@@ -17,6 +17,7 @@ if ARGV.size <= 0
   print "secret: #{request_token.secret}\n"
   
   print "authorize_url: #{request_token.authorize_url}\n"
+  print "Use the browser to access authorize_url, authorize the newly created token and then press enter\n" 
   gets
 else
   print "using token=#{ARGV[0]} secret=#{ARGV[1]}...\n"
