@@ -1,5 +1,5 @@
 class OauthClientsController < ApplicationController
-  before_filter :oauth_required, :only => [:edit]
+  before_filter :oauth_required, :only => [:hello_world]
   
   include ApplicationHelper
   
@@ -27,9 +27,13 @@ class OauthClientsController < ApplicationController
 
   def show
   end
+  
+  def hello_world
+    render :json => "hello world"
+  end
 
   def edit
-    render :json => "hello world"
+    @client_application = current_user.client_applications.find(params[:id])
   end
 
   def update
