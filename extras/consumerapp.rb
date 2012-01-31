@@ -30,3 +30,8 @@ access_token = request_token.get_access_token
 print "access_token.token: #{access_token.token}\n"
 print "access_token.secret: #{access_token.secret}\n"
 
+print "GET /hello_world\n"
+response = access_token.get("/hello_world")
+print "code: #{response.code}\n"
+print "body: #{response.body}\n"
+
