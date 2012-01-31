@@ -3,14 +3,16 @@ require "oauth"
 request_token = nil
 
     
-callback_url = "<could be anything, only used by websites>"
+callback_url = "http://www.google.com" # this could be anything (normally will be a url on the client website requesting access)
+                                       # if this url is invalid you (as resource owner) will receive a 500 internal error after authorizing
+                                       # the token
 key= "<insert the consumer key here>"
 secret= "<insert the secret here>"
 consumer = OAuth::Consumer.new(key,secret, :site => "<insert site url here>")
  
 if ARGV.size <= 0
   
-  print "request new access token from site...\n"
+  print "request new access token from site using key=#{key} and secret=#{secret}...\n"
  
   request_token = consumer.get_request_token(:oauth_callback => callback_url)
   print "token: #{request_token.token}\n"
