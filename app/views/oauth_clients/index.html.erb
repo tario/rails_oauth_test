@@ -11,7 +11,7 @@ Register new applications to get OAuth key-secret pairs, and use it with the tes
 <table>
   <tr><th>Application</th><th>Issued</th><th>&nbsp;</th></tr>
   <% @tokens.each do |token|%>
-    <% content_tag_for :tr, token do %>
+    <tr>
       <td><%= link_to token.client_application.name, token.client_application.url %></td>
       <td><%= token.authorized_at %></td>
       <td>
@@ -20,7 +20,7 @@ Register new applications to get OAuth key-secret pairs, and use it with the tes
         <%= submit_tag "Revoke!" %>
         <% end %>
       </td>
-    <% end %>
+    </tr>
   <% end %>
 
 </table>
