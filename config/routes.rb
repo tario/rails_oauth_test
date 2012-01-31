@@ -15,6 +15,8 @@ OauthTest::Application.routes.draw do
   
   match '/oauth/revoke',               :to => 'oauth#revoke',         :as => :revoke
 
+  match '/hello_world',               :to => 'oauth_clients#hello_world',         :as => :hello_world
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
