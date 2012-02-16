@@ -3,13 +3,16 @@ require "oauth"
 request_token = nil
 
     
-callback_url = "http://www.google.com" # this could be anything (normally will be a url on the client website requesting access)
+callback_url = "http://127.0.0.1:3000/callback" # this could be anything (normally will be a url on the client website requesting access)
                                        # if this url is invalid you (as resource owner) will receive a 500 internal error after authorizing
                                        # the token
-key= "<insert the consumer key here>"
-secret= "<insert the secret here>"
-consumer = OAuth::Consumer.new(key,secret, :site => "<insert site url here>")
- 
+
+
+key= "sei0i2BuwipY8l2yKy6vsgE6zCiE04P43vU9u1rZ"
+secret= "YQfZLTWK4ssCTTQIdPz13S6AdOjDzUit9m5puAPI"
+consumer = OAuth::Consumer.new(key,secret, :site => "http://127.0.0.1:3000")
+
+pin = nil
 if ARGV.size <= 0
   
   print "request new access token from site using key=#{key} and secret=#{secret}...\n"
@@ -19,8 +22,8 @@ if ARGV.size <= 0
   print "secret: #{request_token.secret}\n"
   
   print "authorize_url: #{request_token.authorize_url}\n"
-  print "Use the browser to access authorize_url, authorize the newly created token and then press enter\n" 
-  gets
+  print "Use the browser to access authorize_url, authorize the newly created token and then press enter the verifier\n" 
+  pin = STDIN.readline.chomp
 else
   print "using token=#{ARGV[0]} secret=#{ARGV[1]}...\n"
 
@@ -28,13 +31,10 @@ else
 end
 
 
-access_token = request_token.get_access_token
+access_token = request_token.get_access_token(:oauth_verifier => pin)
 
 print "access_token.token: #{access_token.token}\n"
 print "access_token.secret: #{access_token.secret}\n"
 
-print "GET /hello_world\n"
-response = access_token.get("/hello_world")
-print "code: #{response.code}\n"
-print "body: #{response.body}\n"
+p access_token.get("/hello_world").body
 

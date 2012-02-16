@@ -13,7 +13,7 @@ class RequestToken < OauthToken
   def exchange!
     return false unless authorized?
     return false unless oauth10? || verifier==provided_oauth_verifier
-
+    
     RequestToken.transaction do
       access_token = AccessToken.create(:user => user, :client_application => client_application)
       invalidate!
@@ -34,7 +34,7 @@ class RequestToken < OauthToken
   end
 
   def oauth10?
-    true
+    (defined? OAUTH_10_SUPPORT) && OAUTH_10_SUPPORT && self.callback_url.blank?
   end
 
 end
